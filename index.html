@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - MusicStore</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div id="contenedor-principal">
+        <div id="encabezado">
+            <div id="logo">MusicStore</div>
+            <div id="subtitulo">Gestión de Inventario</div>
+        </div>
+
+        <div id="contenido">
+            <div id="seccion-listado">
+                <div class="titulo-seccion">Artículos Disponibles</div>
+                <div id="listado">
+                    <!-- El listado se genera desde JavaScript -->
+                </div>
+            </div>
+
+            <div id="seccion-formulario">
+                <div class="titulo-seccion">Ingresar Nuevo Artículo</div>
+                <form id="formulario-producto">
+                    <input type="text" id="nombre" placeholder="Nombre del artículo" required>
+                    <input type="number" id="precio" placeholder="Precio sugerido" required>
+                    <button type="submit">Guardar Artículo</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="pie-pagina">
+            <div>&copy; 2026 MusicStore - Sistema Interno</div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
