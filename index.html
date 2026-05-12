@@ -11,11 +11,12 @@
     <h1>Music Store</h1>
     <p>Gestión de inventario</p>
  </header>
- <main> 
-    <section><p>Guitarra Clásica, precio: 15000</p></section>
-    <section><p>Amplificador 15W, precio: 8500</p></section>
-    <section><p>Set de cuerdas, precio: 800</p></section>
- 
+ <main>
+    <section id="seccion-listado">
+        <h2 class="titulo-seccion">Artículos en inventario</h2>
+        <div id="listado"></div>
+    </section>
+
     <h2>Ingresar nuevo articulo</h2>
                 <form id="formulario-producto">
                     <input type="text" id="nombre" placeholder="Nombre del artículo" required>

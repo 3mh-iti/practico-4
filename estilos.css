@@ -6,7 +6,7 @@ body {
     color: #333;
 }
 
-#contenedor-principal {
+main {
     padding: 10px;
 }
 
@@ -30,7 +30,7 @@ header {
     font-weight: bold;
 }
 
-.tarjeta-producto {
+article {
     background-color: white;
     border: 1px solid #ddd;
     padding: 15px;
@@ -40,7 +40,7 @@ header {
     cursor: pointer;
 }
 
-.tarjeta-nombre {
+section {
     font-weight: bold;
     font-size: 16px;
 }
@@ -49,6 +49,12 @@ header {
     color: #27ae60;
     margin-top: 5px;
 }
+
+ article:hover {
+    box-shadow: 0 2px 7px;
+    transform: translateY(4px);
+}
+
 
 /* Clase para interactividad JS */
 .producto-seleccionado {
@@ -81,4 +87,33 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+@media (min-widht: 768px) {
+    #contenido {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 20 px;
+    }
+
+    #section-listado {
+            flex: 30%;
+    }
+
+    #section-formulario{
+            flex: 30%;
+    }
+
+    #listado {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+
+    }
+
+.tarjeta-producto {
+    margin-bottom: 0;
+}
 }
