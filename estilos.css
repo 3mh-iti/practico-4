@@ -6,8 +6,10 @@ body {
     color: #333;
 }
 
-#contenedor-principal {
-    padding: 10px;
+#contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #encabezado {
@@ -30,7 +32,7 @@ body {
     font-weight: bold;
 }
 
-.tarjeta-producto {
+:hover.tarjeta-producto {
     background-color: white;
     border: 1px solid #ddd;
     padding: 15px;
@@ -38,6 +40,7 @@ body {
     border-radius: 4px;
     transition: all 0.3s ease;
     cursor: pointer;
+    box-shadow: #333;
 }
 
 .tarjeta-nombre {
@@ -81,4 +84,21 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+@media(min-width: 768px){
+    #contenido{
+        display: flex;
+        flex-direction: row;
+    }
+    #listado {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 15px;
+        width: 65%;
+    }
+    #seccion-formulario{
+        flex-direction: row;
+        width: 35%;
+    }
 }
