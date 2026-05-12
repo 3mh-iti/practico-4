@@ -10,10 +10,10 @@ function renderizarInventario() {
 
     for (let i = 0; i < inventario.length; i++) {
         let articulo = inventario[i];
-        htmlGenerado += "<div class='tarjeta-producto' data-indice='" + i + "'>";
-        htmlGenerado += "<div class='tarjeta-nombre'>" + articulo.nombre + "</div>";
-        htmlGenerado += "<div class='tarjeta-precio'>$" + articulo.precio + "</div>";
-        htmlGenerado += "</div>";
+        htmlGenerado += "<article class='tarjeta-producto' data-indice='" + i + "'>";
+        htmlGenerado += "<li class='tarjeta-nombre'>" + articulo.nombre + "</li>";
+        htmlGenerado += "<li class='tarjeta-precio'>$" + articulo.precio + "</li>";
+        htmlGenerado += "</article>";
     }
 
     contenedor.innerHTML = htmlGenerado;
