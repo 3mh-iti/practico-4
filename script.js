@@ -1,3 +1,7 @@
+const form = document.querySelector("form")
+const inputNombre = document.getElementById("nombre")
+const inputPrecio = document.getElementById("precio")
+
 let inventario = [
     { nombre: "Guitarra Clásica", precio: 15000 },
     { nombre: "Amplificador 15W", precio: 8500 },
@@ -21,3 +25,17 @@ function renderizarInventario() {
 
 // Carga inicial
 renderizarInventario();
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault()
+
+    let nombre = inputNombre.value
+    let precio = parseInt(inputPrecio.value)
+
+    inventario.push({nombre: nombre, precio: precio})
+
+    renderizarInventario()
+
+    inputNombre.value = ""
+    inputPrecio.value = ""
+})
