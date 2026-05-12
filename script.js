@@ -1,11 +1,4 @@
 const formulario = document.querySelector("#formulario-producto");
-const nombre = document.querySelector("#nombre")
-const precio = document.querySelector("#precio")
-
-let datos = {
-    nombre: nombre.input,
-    precio: precio.input
-}
 
 let inventario = [
     { nombre: "Guitarra Clásica", precio: 15000 },
@@ -13,10 +6,23 @@ let inventario = [
     { nombre: "Set de Cuerdas", precio: 800 } 
 ];
 
-formulario.addEventListener('submit', function submit(){
-    event.preventDefault;
+formulario.addEventListener('submit', function submit(event){
+
+    event.preventDefault();
+
+    const nombre = document.querySelector("#nombre");
+    const precio = document.querySelector("#precio");
+    
+    datos = {
+        nombre: nombre.value,
+        precio: precio.value
+    };
     inventario.push(datos);
+
     renderizarInventario();
+
+    nombre.value = "";
+    precio.value = "";
 });
 
 function renderizarInventario() {
@@ -32,6 +38,14 @@ function renderizarInventario() {
     }
 
     contenedor.innerHTML = htmlGenerado;
+
+    const tarjetas = document.querySelectorAll(".tarjeta-producto");
+    
+    tarjetas.forEach(function(tarjeta) {
+        tarjeta.addEventListener('click', function(event) {
+            tarjetas.classList.toggle("producto-seleccionado");
+        });
+    });
 }
 
 // Carga inicial
