@@ -1,4 +1,4 @@
-const formulario = document.querySelector("#section");
+const formulario = document.querySelector("#seccion-formulario");
 
 let inventario = [
   { nombre: "Guitarra Clásica", precio: 15000 },
