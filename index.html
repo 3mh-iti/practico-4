@@ -7,34 +7,34 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div id="contenedor-principal">
-        <div id="encabezado">
-            <div id="logo">MusicStore</div>
-            <div id="subtitulo">Gestión de Inventario</div>
-        </div>
+    <main id="contenedor-principal">
+        <header id="encabezado">
+            <h1 id="logo">MusicStore</h1>
+            <small id="subtitulo">Gestión de Inventario</small>
+        </header>
 
-        <div id="contenido">
-            <div id="seccion-listado">
-                <div class="titulo-seccion">Artículos Disponibles</div>
-                <div id="listado">
+        <article id="contenido">
+            <section id="seccion-listado">
+                <h2 class="titulo-seccion">Artículos Disponibles</h2>
+                <ul id="listado">
                     <!-- El listado se genera desde JavaScript -->
-                </div>
-            </div>
+                </ul>
+            </section>
 
-            <div id="seccion-formulario">
-                <div class="titulo-seccion">Ingresar Nuevo Artículo</div>
+            <section id="seccion-formulario">
+                <h2 class="titulo-seccion">Ingresar Nuevo Artículo</h2>
                 <form id="formulario-producto">
                     <input type="text" id="nombre" placeholder="Nombre del artículo" required>
                     <input type="number" id="precio" placeholder="Precio sugerido" required>
                     <button type="submit">Guardar Artículo</button>
                 </form>
-            </div>
-        </div>
+            </section>
+        </article>
 
-        <div id="pie-pagina">
+        <footer id="pie-pagina">
             <div>&copy; 2026 MusicStore - Sistema Interno</div>
-        </div>
-    </div>
+        </footer>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
