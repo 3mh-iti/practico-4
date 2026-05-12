@@ -1,4 +1,4 @@
-const formulario = document.querySelector("#seccion-formulario");
+const formulario = document.querySelector("#formulario-producto");
 
 let inventario = [
   { nombre: "Guitarra Clásica", precio: 15000 },
@@ -12,12 +12,12 @@ function renderizarInventario() {
 
   for (let i = 0; i < inventario.length; i++) {
     let articulo = inventario[i];
-    htmlGenerado += "<div class='tarjeta-producto' data-indice='" + i + "'>";
+    htmlGenerado += "<section class='tarjeta-producto' data-indice='" + i + "'>";
     htmlGenerado +=
       "<article class='tarjeta-nombre'>" + articulo.nombre + "</article>";
     htmlGenerado +=
       "<article class='tarjeta-precio'>$" + articulo.precio + "</article>";
-    htmlGenerado += "</div>";
+    htmlGenerado += "</section>";
   }
 
   contenedor.innerHTML = htmlGenerado;
