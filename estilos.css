@@ -40,6 +40,10 @@ body {
     cursor: pointer;
 }
 
+.tarjeta-producto:hover{
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+}
+
 .tarjeta-nombre {
     font-weight: bold;
     font-size: 16px;
@@ -81,4 +85,25 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    #contenido {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #seccion-listado{
+        flex: 0 0 60%;
+    }
+
+    #seccion-formulario{
+        flex: 0 0 30%;
+    }
+
+    #listado{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0px 15px;
+    }
 }
