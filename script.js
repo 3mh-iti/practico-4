@@ -18,6 +18,33 @@ function renderizarInventario() {
 
     contenedor.innerHTML = htmlGenerado;
 }
+const formulario = document.getElementById("formulario-producto");
+
+formulario.addEventListener("submit", function(evento) {
+    
+    evento.preventDefault();
+    
+    const nombre = document.getElementById("nombre").value;
+    const precio = document.getElementById("precio").value;
+    const nuevoProducto = { nombre, precio };
+    
+    inventario.push(nuevoProducto);
+    
+    renderizarInventario();
+    asignarEventosATarjetas();  
+    formulario.reset();
+});
+function clicktarjetas() {
+    const tarjetas = document.querySelectorAll(".tarjeta-producto");
+    
+    for (let i = 0; i < tarjetas.length; i++) {
+        tarjetas[i].addEventListener("click", function() {
+            tarjetas[i].classList.toggle("producto-seleccionado");
+        });
+    }
+}
 
 // Carga inicial
 renderizarInventario();
+
+clicktarjetas();
