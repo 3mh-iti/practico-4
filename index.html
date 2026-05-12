@@ -8,32 +8,32 @@
 </head>
 <body>
     <div id="contenedor-principal">
-        <div id="encabezado">
+        <header id="encabezado">
             <div id="logo">MusicStore</div>
             <div id="subtitulo">Gestión de Inventario</div>
-        </div>
+        </header>
 
-        <div id="contenido">
-            <div id="seccion-listado">
+        <main id="contenido">
+            <section id="seccion-listado">
                 <div class="titulo-seccion">Artículos Disponibles</div>
                 <div id="listado">
                     <!-- El listado se genera desde JavaScript -->
                 </div>
-            </div>
+            </section>
 
-            <div id="seccion-formulario">
+            <section id="seccion-formulario">
                 <div class="titulo-seccion">Ingresar Nuevo Artículo</div>
                 <form id="formulario-producto">
                     <input type="text" id="nombre" placeholder="Nombre del artículo" required>
                     <input type="number" id="precio" placeholder="Precio sugerido" required>
                     <button type="submit">Guardar Artículo</button>
                 </form>
-            </div>
-        </div>
+            </section>
+        </main>
 
-        <div id="pie-pagina">
+        <footer id="pie-pagina">
             <div>&copy; 2026 MusicStore - Sistema Interno</div>
-        </div>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
