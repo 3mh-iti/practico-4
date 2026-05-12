@@ -7,34 +7,26 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <div id="contenedor-principal">
-        <div id="encabezado">
-            <div id="logo">MusicStore</div>
-            <div id="subtitulo">Gestión de Inventario</div>
-        </div>
-
-        <div id="contenido">
-            <div id="seccion-listado">
-                <div class="titulo-seccion">Artículos Disponibles</div>
-                <div id="listado">
-                    <!-- El listado se genera desde JavaScript -->
-                </div>
-            </div>
-
-            <div id="seccion-formulario">
-                <div class="titulo-seccion">Ingresar Nuevo Artículo</div>
+ <header>
+    <h1>Music Store</h1>
+    <p>Gestión de inventario</p>
+ </header>
+ <main> 
+    <section><p>Guitarra Clásica, precio: 15000</p></section>
+    <section><p>Amplificador 15W, precio: 8500</p></section>
+    <section><p>Set de cuerdas, precio: 800</p></section>
+ 
+    <h2>Ingresar nuevo articulo</h2>
                 <form id="formulario-producto">
                     <input type="text" id="nombre" placeholder="Nombre del artículo" required>
                     <input type="number" id="precio" placeholder="Precio sugerido" required>
                     <button type="submit">Guardar Artículo</button>
                 </form>
-            </div>
-        </div>
-
-        <div id="pie-pagina">
-            <div>&copy; 2026 MusicStore - Sistema Interno</div>
-        </div>
-    </div>
+            </main>
+    
+        <footer>
+            <section><p>© 2026 MusicStore - sistema interno</p></section>
+        </footer>
     <script src="script.js"></script>
 </body>
 </html>
