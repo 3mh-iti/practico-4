@@ -8,6 +8,17 @@ let inventario = [
     { nombre: "Set de Cuerdas", precio: 800 }
 ];
 
+function actualizarTarjetas() {
+    let tarjetas = document.querySelectorAll(".tarjeta-producto")
+    tarjetas.forEach(function (e) {
+        e.addEventListener("click", function () {
+            e.classList.toggle("producto-seleccionado")
+        })
+    })
+}
+
+actualizarTarjetas()
+
 function renderizarInventario() {
     let contenedor = document.getElementById("listado");
     let htmlGenerado = "";
@@ -21,6 +32,8 @@ function renderizarInventario() {
     }
 
     contenedor.innerHTML = htmlGenerado;
+
+    actualizarTarjetas()
 }
 
 // Carga inicial
