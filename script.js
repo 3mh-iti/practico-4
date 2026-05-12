@@ -21,17 +21,17 @@ actualizarTarjetas()
 
 function renderizarInventario() {
     let contenedor = document.getElementById("listado");
-    let htmlGenerado = "";
+    contenedor.innerHTML = ""
+    
+    inventario.forEach(function (e, i) {
+        const elemento = document.createElement("article")
+        elemento.classList.add("tarjeta-producto")
+        elemento.setAttribute("data-indice", i)
+        elemento.innerHTML += "<article class='tarjeta-nombre'>" + e.nombre + "</article>"
+        elemento.innerHTML += "<article class='tarjeta-precio'>$" + e.precio + "</article>"
 
-    for (let i = 0; i < inventario.length; i++) {
-        let articulo = inventario[i];
-        htmlGenerado += "<article class='tarjeta-producto' data-indice='" + i + "'>";
-        htmlGenerado += "<article class='tarjeta-nombre'>" + articulo.nombre + "</article>";
-        htmlGenerado += "<article class='tarjeta-precio'>$" + articulo.precio + "</article>";
-        htmlGenerado += "</article>";
-    }
-
-    contenedor.innerHTML = htmlGenerado;
+        contenedor.appendChild(elemento)
+    })
 
     actualizarTarjetas()
 }
