@@ -7,8 +7,6 @@ body {
 }
 
 #contenido {
-    display: flex;
-    flex-direction: column;
     gap: 15px;
 }
 
@@ -88,17 +86,23 @@ button {
 
 @media(min-width: 768px){
     #contenido{
+        flex: 1;
         display: flex;
-        flex-direction: row;
+        align-items: flex-start;
+    }
+    #seccion-formulario{
+        flex: 1;
+        align-items: flex-start;
+        width: 35%;
     }
     #listado {
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 15px;
         width: 65%;
     }
-    #seccion-formulario{
-        flex-direction: row;
-        width: 35%;
+    
+    footer{
+        align-items: baseline;
     }
 }
