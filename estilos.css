@@ -8,6 +8,21 @@ body {
     color: #333;
 }
 
+#contenido {
+    display:flex
+}
+form {
+width:35%;    
+}
+#section-listado {
+    width: 65%
+}
+#listado {
+display:grid;
+grid-template-columns: 50% 50%;
+gap: 15px;
+}
+
 #contenedor-principal {
     padding: 10px;
 }
@@ -40,6 +55,11 @@ body {
     border-radius: 4px;
     transition: all 0.3s ease;
     cursor: pointer;
+}
+
+.tarjeta-producto:hover {
+box-shadow:10px;
+box-shadow: rgb(rgb(1, 129, 233), rgb(0, 171, 238), blue);
 }
 
 .tarjeta-nombre {
