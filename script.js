@@ -19,5 +19,8 @@ function renderizarInventario() {
     contenedor.innerHTML = htmlGenerado;
 }
 
+
+
+
 // Carga inicial
 renderizarInventario();

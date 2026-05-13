@@ -1,4 +1,6 @@
-/* Diseño base (Mobile First) */
+@media(min-width:768px){
+}/* Diseño base (Mobile First) */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f5f5;
