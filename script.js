@@ -18,9 +18,32 @@ function renderizarInventario() {
 
     contenedor.innerHTML = htmlGenerado;
 }
+const formulario = document.getElementById("formulario-producto");
 
-
+formulario.addEventListener("submit", function(e) {
+    
+    e.preventDefault();
+    
+    const nombre = document.getElementById("nombre").value;
+    const precio = document.getElementById("precio").value;
+    const objeto = {nombre, precio};
+    
+    inventario.push(objeto);
+    renderizarInventario();
+    formulario.reset();
+});
+function tarjetas() {
+    const tarjetas = document.querySelectorAll(".tarjeta-producto");
+    
+    for (let i=0;i<tarjetas.length;i++) {
+        tarjetas[i].addEventListener("click", function() {
+            
+tarjetas[i].classList.toggle("producto-seleccionado");
+        });
+    }
+}
 
 
 // Carga inicial
 renderizarInventario();
+tarjetas();
