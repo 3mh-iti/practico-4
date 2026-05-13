@@ -5,6 +5,9 @@ body {
     margin: 0;
     color: #333;
 }
+ul{
+    list-style: none;
+}
 
 #contenedor-principal {
     padding: 10px;
@@ -18,16 +21,23 @@ body {
     border-radius: 4px;
     margin-bottom: 20px;
 }
+#contenido{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
 #logo {
     font-size: 24px;
     font-weight: bold;
 }
 
-.titulo-seccion {
+.titulo-contenido {
     font-size: 18px;
     margin-bottom: 10px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
 
 .tarjeta-producto {
@@ -38,6 +48,11 @@ body {
     border-radius: 4px;
     transition: all 0.3s ease;
     cursor: pointer;
+}
+
+.tarjeta-producto:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
 }
 
 .tarjeta-nombre {
@@ -81,4 +96,18 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+}
+button:hover {
+    background-color: #34495e;
+}
+
+@media (min-width: 768px) {
+    #contenido {
+        display: flex;
+        gap: 15px;
+        flex-direction: row;
+    }
+    #seccion-listado, #seccion-formulario {
+        flex: 1;
+    }
 }
