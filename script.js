@@ -25,6 +25,7 @@ function renderizarInventario() {
             this.classList.toggle("producto-seleccionado");
         });
     }
+    } 
 
     let formulario = document.getElementById("formulario-producto");
     formulario.addEventListener("submit", function(evento) {
@@ -40,6 +41,6 @@ function renderizarInventario() {
         document.querySelector("#nombre").value = ""
         document.querySelector("#precio").value = ""
     });
-}
+
 // Carga inicial
 renderizarInventario();
