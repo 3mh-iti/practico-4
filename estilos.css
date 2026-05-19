@@ -69,7 +69,8 @@ form {
     gap: 12px;
 }
 
-input, button {
+input,
+button {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -81,4 +82,8 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+ul {
+    list-style: none;
 }
