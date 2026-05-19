@@ -1,6 +1,6 @@
 /* Diseño base (Mobile First) */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f5f5;
     margin: 0;
     color: #333;
@@ -30,7 +30,7 @@ header {
     font-weight: bold;
 }
 
-article {
+.tarjeta-producto {
     background-color: white;
     border: 1px solid #ddd;
     padding: 15px;
@@ -40,7 +40,11 @@ article {
     cursor: pointer;
 }
 
-section {
+.tarjeta-producto:hover {
+    box-shadow: 0 2px 7px;
+}
+
+.tarjeta-nombre {
     font-weight: bold;
     font-size: 16px;
 }
@@ -50,19 +54,13 @@ section {
     margin-top: 5px;
 }
 
- article:hover {
-    box-shadow: 0 2px 7px;
-    transform: translateY(4px);
-}
-
-
 /* Clase para interactividad JS */
 .producto-seleccionado {
     border-left: 5px solid #3498db;
     background-color: #ebf5fb;
 }
 
-#seccion-formulario {
+section {
     background-color: #e8ecef;
     padding: 15px;
     border-radius: 4px;
@@ -75,7 +73,8 @@ form {
     gap: 12px;
 }
 
-input, button {
+input,
+button {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -89,31 +88,24 @@ button {
     cursor: pointer;
 }
 
-@media (min-widht: 768px) {
+@media screen and (min-width: 768px) {
     #contenido {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 20px;
+        display: flex;
+        padding: .5rem;
+        column-gap: 2rem;
     }
 
-    #section-listado {
-            flex: 30%;
+    #seccion-listado {
+        width: 60%;
     }
 
-    #section-formulario{
-            flex: 30%;
+    #seccion-formulario {
+        width: 30%;
     }
 
     #listado {
-
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
-
     }
-
-.tarjeta-producto {
-    margin-bottom: 0;
-}
 }
