@@ -1,7 +1,7 @@
 let inventario = [
     { nombre: "Guitarra Clásica", precio: 15000 },
     { nombre: "Amplificador 15W", precio: 8500 },
-    { nombre: "Set de Cuerdas", precio: 800 }
+    { nombre: "Set de Cuerdas", precio: 800 },
 ];
 
 const formulario = document.querySelector("form");
@@ -45,3 +45,24 @@ function renderizarInventario() {
 
 // Carga inicial
 renderizarInventario();
+
+formulario.addEventListener("submit", function (event) {
+    event.preventDefault();
+    // Obtener los valores del formulario
+    let nombreInput = document.getElementById("nombre");
+    let precioInput = document.getElementById("precio");
+
+    // Crear un nuevo artículo y agregarlo al inventario
+
+    let nuevoArticulo = {
+        nombre: nombreInput.value,
+        precio: precioInput.value,
+    };
+
+    inventario.push(nuevoArticulo);
+    renderizarInventario();
+
+    // Limpiar los campos del formulario
+    nombreInput.value = "";
+    precioInput.value = "";
+});
