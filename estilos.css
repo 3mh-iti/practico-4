@@ -88,12 +88,18 @@ button {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+#buscador {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 14px;
+}
+
 @media screen and (min-width: 768px) {
-  
   #contenido {
-    display: flex;        
+    display: flex;
     justify-content: space-between;
-    align-items: flex-start; 
+    align-items: flex-start;
   }
 
   #seccion-listado {
@@ -106,7 +112,7 @@ button {
 
   #listado {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-  } 
+  }
 }

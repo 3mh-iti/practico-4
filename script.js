@@ -1,4 +1,5 @@
 const formulario = document.querySelector("#formulario-producto");
+const buscador = document.querySelector("#buscador");
 
 let inventario = [
   { nombre: "Guitarra Clásica", precio: 15000 },
@@ -6,12 +7,11 @@ let inventario = [
   { nombre: "Set de Cuerdas", precio: 800 },
 ];
 
-function renderizarInventario() {
+function renderizarInventario(listaProductos = inventario) {
   let contenedor = document.querySelector("#listado");
   contenedor.replaceChildren();
 
-  // Se recorre el inventario y se crean las tarjetas de producto
-  inventario.forEach((articulo) => {
+  listaProductos.forEach((articulo) => {
     let section = document.createElement("section");
     section.classList.add("tarjeta-producto");
 
@@ -22,7 +22,7 @@ function renderizarInventario() {
     let artPrecio = document.createElement("article");
     artPrecio.classList.add("tarjeta-precio");
     artPrecio.textContent = "$" + articulo.precio;
-    // Se agregan los elementos a la tarjeta y luego al contenedor
+
     section.appendChild(artNombre);
     section.appendChild(artPrecio);
     contenedor.appendChild(section);
@@ -33,26 +33,37 @@ renderizarInventario();
 
 formulario.addEventListener("submit", function (event) {
   event.preventDefault();
-  // Obtener los valores del formulario
+
   let nombreInput = document.getElementById("nombre");
   let precioInput = document.getElementById("precio");
 
-  // Crear un nuevo artículo y agregarlo al inventario
-
   let nuevoArticulo = {
     nombre: nombreInput.value,
-    precio: precioInput.value,
+    precio: Number(precioInput.value),
   };
 
   inventario.push(nuevoArticulo);
   renderizarInventario();
 
-  // Limpiar los campos del formulario
   nombreInput.value = "";
   precioInput.value = "";
 });
 
-// Agregar evento de clic a las tarjetas de producto
+buscador.addEventListener("keyup", function (e) {
+  let textoBuscado = buscador.value.toLowerCase();
+
+  if (textoBuscado === "") {
+    renderizarInventario();
+    return;
+  }
+
+  let filtrado = inventario.filter(function (articulo) {
+    return articulo.nombre.toLowerCase().includes(textoBuscado);
+  });
+
+  renderizarInventario(filtrado);
+});
+
 document.getElementById("listado").addEventListener("click", function (event) {
   event.preventDefault();
 
