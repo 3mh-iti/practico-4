@@ -8,24 +8,23 @@ function renderizarInventario() {
     let contenedor = document.getElementById("listado");
     let htmlGenerado = "";
 
-    for (let i = 0; i < inventario.length; i++) {
-        let articulo = inventario[i];
+    inventario.forEach((articulo, i) => {
         htmlGenerado += "<article class='tarjeta-producto' data-indice='" + i + "'>";
         htmlGenerado += "<div class='tarjeta-nombre'>" + articulo.nombre + "</div>";
         htmlGenerado += "<div class='tarjeta-precio'>$" + articulo.precio + "</div>";
         htmlGenerado += "</article>";
-    }
+    });
 
     contenedor.innerHTML = htmlGenerado;
 
     let tarjetas = document.querySelectorAll(".tarjeta-producto");
     
-    for (let i = 0; i < tarjetas.length; i++) {
-        tarjetas[i].addEventListener("click", function() {
+    tarjetas.forEach((tarjeta) => {
+        tarjeta.addEventListener("click", function() {
             this.classList.toggle("producto-seleccionado");
         });
+    });
     }
-    } 
 
     let formulario = document.getElementById("formulario-producto");
     formulario.addEventListener("submit", function(evento) {
