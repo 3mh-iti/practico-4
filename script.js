@@ -4,6 +4,23 @@ let inventario = [
     { nombre: "Set de Cuerdas", precio: 800 }
 ];
 
+const formulario = document.querySelector("form");
+const inptNombre = document.querySelector("#nombre");
+const inptPrecio = document.querySelector("#precio");
+
+formulario.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const nombre = inptNombre.value;
+    const precio = inptPrecio.value;
+    const producto = {
+        nombre,
+        precio,
+    }
+    inventario.push(producto);
+    renderizarInventario();
+    formulario.reset();
+});
+
 function renderizarInventario() {
     let contenedor = document.getElementById("listado");
     let htmlGenerado = "";
