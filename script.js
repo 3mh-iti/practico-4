@@ -7,23 +7,28 @@ let inventario = [
 ];
 
 function renderizarInventario() {
-  let contenedor = document.getElementById("listado");
-  let htmlGenerado = "";
+  let contenedor = document.querySelector("#listado");
+  contenedor.replaceChildren();
 
-  for (let i = 0; i < inventario.length; i++) {
-    let articulo = inventario[i];
-    htmlGenerado += "<section class='tarjeta-producto' data-indice='" + i + "'>";
-    htmlGenerado +=
-      "<article class='tarjeta-nombre'>" + articulo.nombre + "</article>";
-    htmlGenerado +=
-      "<article class='tarjeta-precio'>$" + articulo.precio + "</article>";
-    htmlGenerado += "</section>";
-  }
+  // Se recorre el inventario y se crean las tarjetas de producto
+  inventario.forEach((articulo) => {
+    let section = document.createElement("section");
+    section.classList.add("tarjeta-producto");
 
-  contenedor.innerHTML = htmlGenerado;
+    let artNombre = document.createElement("article");
+    artNombre.classList.add("tarjeta-nombre");
+    artNombre.textContent = articulo.nombre;
+
+    let artPrecio = document.createElement("article");
+    artPrecio.classList.add("tarjeta-precio");
+    artPrecio.textContent = "$" + articulo.precio;
+    // Se agregan los elementos a la tarjeta y luego al contenedor
+    section.appendChild(artNombre);
+    section.appendChild(artPrecio);
+    contenedor.appendChild(section);
+  });
 }
 
-// Carga inicial
 renderizarInventario();
 
 formulario.addEventListener("submit", function (event) {
