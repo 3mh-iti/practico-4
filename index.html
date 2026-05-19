@@ -1,40 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventario - MusicStore</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
     <div id="contenedor-principal">
-        <header id="encabezado">
+        <div id="encabezado">
             <div id="logo">MusicStore</div>
             <div id="subtitulo">Gestión de Inventario</div>
-        </header>
+        </div>
 
-        <main id="contenido">
-            <section id="seccion-listado">
+        <div id="contenido">
+            <div id="seccion-listado">
                 <div class="titulo-seccion">Artículos Disponibles</div>
                 <div id="listado">
                     <!-- El listado se genera desde JavaScript -->
                 </div>
-            </section>
+            </div>
 
-            <section id="seccion-formulario">
+            <div id="seccion-formulario">
                 <div class="titulo-seccion">Ingresar Nuevo Artículo</div>
                 <form id="formulario-producto">
-                    <input type="text" id="nombre" placeholder="Nombre del artículo" required>
-                    <input type="number" id="precio" placeholder="Precio sugerido" required>
+                    <input name="nombre" type="text" id="nombre" placeholder="Nombre del artículo" required>
+                    <input name="precio" type="number" id="precio" placeholder="Precio sugerido" required>
                     <button type="submit">Guardar Artículo</button>
                 </form>
-            </section>
-        </main>
+            </div>
+        </div>
 
-        <footer id="pie-pagina">
+        <div id="pie-pagina">
             <div>&copy; 2026 MusicStore - Sistema Interno</div>
-        </footer>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
