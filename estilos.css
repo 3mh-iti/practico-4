@@ -38,6 +38,7 @@ header {
     border-radius: 4px;
     transition: all 0.3s ease;
     cursor: pointer;
+    height: 50%;
 }
 
 .tarjeta-producto:hover {
@@ -105,6 +106,7 @@ ul {
 
     #seccion-listado {
         width: 60%;
+
     }
 
     #seccion-formulario {
