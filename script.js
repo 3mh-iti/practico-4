@@ -27,27 +27,12 @@ function renderizarInventario() {
 
     for (let i = 0; i < inventario.length; i++) {
         let articulo = inventario[i];
-<<<<<<< HEAD
         htmlGenerado += "<article class='tarjeta-producto' data-indice='" + i + "'>";
         htmlGenerado += "<article class='tarjeta-nombre'>" + articulo.nombre + "</article>";
         htmlGenerado += "<article class='tarjeta-precio'>$" + articulo.precio + "</article>";
         htmlGenerado += "</article>";
-=======
-        htmlGenerado += "<li class='tarjeta-producto' data-indice='" + i + "'>";
-        htmlGenerado += "<p class='tarjeta-nombre'>" + articulo.nombre + "</p>";
-        htmlGenerado += "<p class='tarjeta-precio'>$" + articulo.precio + "</p>";
-        htmlGenerado += "</li>";
->>>>>>> origin/main
     }
     contenedor.innerHTML = htmlGenerado;
-
-    const productos = document.querySelectorAll(".tarjeta-producto");
-    for (let i = 0; i < productos.length; i++) {
-        const producto = productos[i];
-        producto.addEventListener("click", function (e) {
-            producto.classList.toggle("producto-seleccionado");
-        });
-    }
 }
 const formulario = document.getElementById("formulario-producto");
 
@@ -78,27 +63,4 @@ function clicktarjetas() {
 // Carga inicial
 renderizarInventario();
 
-<<<<<<< HEAD
 clicktarjetas();
-=======
-formulario.addEventListener("submit", function (event) {
-    event.preventDefault();
-    // Obtener los valores del formulario
-    let nombreInput = document.getElementById("nombre");
-    let precioInput = document.getElementById("precio");
-
-    // Crear un nuevo artículo y agregarlo al inventario
-
-    let nuevoArticulo = {
-        nombre: nombreInput.value,
-        precio: precioInput.value,
-    };
-
-    inventario.push(nuevoArticulo);
-    renderizarInventario();
-
-    // Limpiar los campos del formulario
-    nombreInput.value = "";
-    precioInput.value = "";
-});
->>>>>>> origin/main
