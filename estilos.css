@@ -1,5 +1,11 @@
-@media(min-width:768px){
-}/* Diseño base (Mobile First) */
+
+
+/* Diseño base (Mobile First) */
+
+#listado {
+
+    list-style:none;
+}
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -8,20 +14,6 @@ body {
     color: #333;
 }
 
-#contenido {
-    display:flex
-}
-form {
-width:35%;    
-}
-#section-listado {
-    width: 65%
-}
-#listado {
-display:grid;
-grid-template-columns: 50% 50%;
-gap: 15px;
-}
 
 #contenedor-principal {
     padding: 10px;
@@ -55,12 +47,12 @@ gap: 15px;
     border-radius: 4px;
     transition: all 0.3s ease;
     cursor: pointer;
+    transition: 0.5s;
+}
+.tarjeta-producto:hover{
+box-shadow: 3px 3px 3px rgba(7, 7, 7, 0.212);
 }
 
-.tarjeta-producto:hover {
-box-shadow:10px;
-box-shadow: rgb(rgb(1, 129, 233), rgb(0, 171, 238), blue);
-}
 
 .tarjeta-nombre {
     font-weight: bold;
@@ -103,4 +95,26 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    #contenido {
+        display: flex;
+        padding: .5rem;
+        column-gap: 2rem;
+    }
+
+    #seccion-listado {
+        width: 60%;
+    }
+
+    #seccion-formulario {
+        width: 30%;
+    }
+
+    #listado {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
 }
