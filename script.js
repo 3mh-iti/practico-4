@@ -6,17 +6,26 @@ let inventario = [
 
 function renderizarInventario() {
     let contenedor = document.getElementById("listado");
-    let htmlGenerado = "";
+    contenedor.innerHTML = "";
 
     inventario.forEach((articulo, i) => {
-        htmlGenerado += "<article class='tarjeta-producto' data-indice='" + i + "'>";
-        htmlGenerado += "<div class='tarjeta-nombre'>" + articulo.nombre + "</div>";
-        htmlGenerado += "<div class='tarjeta-precio'>$" + articulo.precio + "</div>";
-        htmlGenerado += "</article>";
+            const elemento = document.createElement("article")
+            elemento.classList.add("tarjeta-producto")
+            elemento.setAttribute("data-indice", i);
+            
+            const nombre = document.createElement("div")
+            nombre.classList.add("tarjeta-nombre")
+            nombre.textContent = articulo.nombre;
+
+            const precio = document.createElement("div")
+            precio.classList.add("tarjeta-precio")
+            precio.textContent = "$" + articulo.precio;
+
+            contenedor.appendChild(elemento);
+            elemento.appendChild(nombre);
+            elemento.appendChild(precio);
     });
-
-    contenedor.innerHTML = htmlGenerado;
-
+    
     let tarjetas = document.querySelectorAll(".tarjeta-producto");
     
     tarjetas.forEach((tarjeta) => {
