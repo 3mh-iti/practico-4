@@ -1,43 +1,55 @@
 <!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventario - MusicStore</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
 
-<body>
+  <body>
     <main id="contenedor-principal">
-        <header id="encabezado">
-            <h1 id="logo">MusicStore</h1>
-            <h2 id="subtitulo">Gestión de Inventario</h2>
-        </header>
+      <header id="encabezado">
+        <h1 id="logo">MusicStore</h1>
+        <h2 id="subtitulo">Gestión de Inventario</h2>
+        <label>Buscador: </label>
+        <input id="busqueda" type="search" name="busqueda" />
+      </header>
+      <section id="contenido">
+        <article id="seccion-listado">
+          <h3 class="titulo-seccion">Artículos Disponibles</h3>
+          <div id="listado">
+            <!-- El listado se genera desde JavaScript -->
+          </div>
+        </article>
 
-        <section id="contenido">
-            <article id="seccion-listado">
-                <h3 class="titulo-seccion">Artículos Disponibles</h3>
-                <ul id="listado">
-                    <!-- El listado se genera desde JavaScript -->
-                </ul>
-            </article>
+        <article id="seccion-formulario">
+          <h3 class="titulo-seccion">Ingresar Nuevo Artículo</h3>
+          <form id="formulario-producto">
+            <input
+              name="nombre"
+              type="text"
+              id="nombre"
+              placeholder="Nombre del artículo"
+              required
+            />
+            <input
+              name="precio"
+              type="number"
+              id="precio"
+              placeholder="Precio sugerido"
+              required
+            />
+            <input type="hidden" name="" id="ideado" />
+            <button type="submit">Guardar Artículo</button>
+          </form>
+        </article>
+      </section>
 
-            <article id="seccion-formulario">
-                <h3 class="titulo-seccion">Ingresar Nuevo Artículo</h3>
-                <form id="formulario-producto">
-                    <input name="nombre" type="text" id="nombre" placeholder="Nombre del artículo" required>
-                    <input name="precio" type="number" id="precio" placeholder="Precio sugerido" required>
-                    <button type="submit">Guardar Artículo</button>
-                </form>
-            </article>
-        </section>
-
-        <footer id="pie-pagina">
-            <small>&copy; 2026 MusicStore - Sistema Interno</small>
-        </footer>
+      <footer id="pie-pagina">
+        <small>&copy; 2026 MusicStore - Sistema Interno</small>
+      </footer>
     </main>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
