@@ -34,24 +34,44 @@ formulario.addEventListener("submit", function (e) {
     formulario.reset();
 });
 
+const formulario = document.querySelector("form");
+const inptNombre = document.querySelector("#nombre");
+const inptPrecio = document.querySelector("#precio");
+
+formulario.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const nombre = inptNombre.value;
+    const precio = inptPrecio.value;
+    const producto = {
+        nombre,
+        precio,
+    }
+    inventario.push(producto);
+    renderizarInventario();
+    formulario.reset();
+});
+
 function renderizarInventario() {
     let contenedor = document.getElementById("listado");
-    htmlGenerado = "";
-// primer for //
-    inventario.forEach (function(e, i){
-        const elemento = document.createElement("li")
-        elemento.classList.add("tarjeta-product")
-        elemento.setAttribute("data-indice", i)
-        elemento.innerHTML+= "<li class='tarjeta-producto'" + ">";
-    });
+    let htmlGenerado = "";
+
+    for (let i = 0; i < inventario.length; i++) {
+        let articulo = inventario[i];
+        htmlGenerado += "<li class='tarjeta-producto' data-indice='" + i + "'>";
+        htmlGenerado += "<p class='tarjeta-nombre'>" + articulo.nombre + "</p>";
+        htmlGenerado += "<p class='tarjeta-precio'>$" + articulo.precio + "</p>";
+        htmlGenerado += "</li>";
     }
     contenedor.innerHTML = htmlGenerado;
 
     const productos = document.querySelectorAll(".tarjeta-producto");
-//segundo for//
-  
-    
-
+    for (let i = 0; i < productos.length; i++) {
+        const producto = productos[i];
+        producto.addEventListener("click", function (e) {
+            producto.classList.toggle("producto-seleccionado");
+        });
+    }
+}
 
 // Carga inicial
 renderizarInventario();
