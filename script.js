@@ -8,8 +8,9 @@ let inventario = [
     { nombre: "Set de Cuerdas", precio: 800 }
 ];
 
+let tarjetas
 function actualizarTarjetas() {
-    let tarjetas = document.querySelectorAll(".tarjeta-producto")
+    tarjetas = document.querySelectorAll(".tarjeta-producto")
     tarjetas.forEach(function (e) {
         e.addEventListener("click", function () {
             e.classList.toggle("producto-seleccionado")
@@ -29,8 +30,20 @@ function renderizarInventario() {
         elemento.setAttribute("data-indice", i)
         elemento.innerHTML += "<article class='tarjeta-nombre'>" + e.nombre + "</article>"
         elemento.innerHTML += "<article class='tarjeta-precio'>$" + e.precio + "</article>"
+        elemento.innerHTML += "<button id='modificar'>Modificar</button>"
 
         contenedor.appendChild(elemento)
+
+        const btnModificar = elemento.querySelector("button#modificar")
+        btnModificar.addEventListener("click", function (event) {
+            elemento.classList.toggle("producto-seleccionado")
+            form.setAttribute("modificar", true)
+            form.setAttribute("data-indice", i)
+            console.log("activo" + i)
+
+            modificarForm()
+        })
+        form.setAttribute("modificar", false)
     })
 
     actualizarTarjetas()
@@ -41,14 +54,36 @@ renderizarInventario();
 
 form.addEventListener("submit", function (e) {
     e.preventDefault()
+    const modificar = form.getAttribute("modificar")
 
-    let nombre = inputNombre.value
-    let precio = parseInt(inputPrecio.value)
+    if (modificar === "true") {
+        const indice = form.getAttribute("data-indice")
+        inventario[indice].nombre = inputNombre.value
+        inventario[indice].precio = inputPrecio.value
 
-    inventario.push({nombre: nombre, precio: precio})
+        renderizarInventario()
+        
+        inputNombre.value = ""
+        inputPrecio.value = ""
+    }else{
+        let nombre = inputNombre.value
+        let precio = parseInt(inputPrecio.value)
 
-    renderizarInventario()
+        inventario.push({nombre: nombre, precio: precio})
 
-    inputNombre.value = ""
-    inputPrecio.value = ""
+        renderizarInventario()
+
+        inputNombre.value = ""
+        inputPrecio.value = ""
+    }
 })
+
+function modificarForm(i) {
+    const modificar = form.getAttribute("modificar")
+    if (modificar === "true") {
+        const indice = form.getAttribute("data-indice")
+        inputNombre.value = inventario[indice].nombre
+        inputPrecio.value = inventario[indice].precio
+
+    }
+}
