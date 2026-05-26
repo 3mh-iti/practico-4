@@ -31,17 +31,27 @@ function renderizarInventario() {
         elemento.innerHTML += "<article class='tarjeta-nombre'>" + e.nombre + "</article>"
         elemento.innerHTML += "<article class='tarjeta-precio'>$" + e.precio + "</article>"
         elemento.innerHTML += "<button id='modificar'>Modificar</button>"
+        elemento.innerHTML += "<button id='eliminar'>Eliminar</button>"
 
         contenedor.appendChild(elemento)
 
         const btnModificar = elemento.querySelector("button#modificar")
-        btnModificar.addEventListener("click", function (event) {
+            btnModificar.addEventListener("click", function (event) {
             elemento.classList.toggle("producto-seleccionado")
             form.setAttribute("modificar", true)
             form.setAttribute("data-indice", i)
             console.log("activo" + i)
 
             modificarForm()
+        })
+
+        const btnEliminar = elemento.querySelector("button#eliminar")
+        btnEliminar.addEventListener("click", function () {
+            elemento.classList.toggle("producto-seleccionado")
+            const indice = form.getAttribute("data-indice")
+            inventario.splice(indice, 1)
+
+            renderizarInventario()
         })
         form.setAttribute("modificar", false)
     })
@@ -78,12 +88,11 @@ form.addEventListener("submit", function (e) {
     }
 })
 
-function modificarForm(i) {
+function modificarForm() {
     const modificar = form.getAttribute("modificar")
     if (modificar === "true") {
         const indice = form.getAttribute("data-indice")
         inputNombre.value = inventario[indice].nombre
         inputPrecio.value = inventario[indice].precio
-
     }
 }
