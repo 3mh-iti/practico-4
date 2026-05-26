@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 
-<body>
+
     <main id="contenedor-principal">
         <header id="encabezado">
             <h1 id="logo">MusicStore</h1>
@@ -26,6 +26,7 @@
             <article id="seccion-formulario">
                 <h3 class="titulo-seccion">Ingresar Nuevo Artículo</h3>
                 <form id="formulario-producto">
+                  <input type="hidden" name="id" id="id">
                     <input name="nombre" type="text" id="nombre" placeholder="Nombre del artículo" required>
                     <input name="precio" type="number" id="precio" placeholder="Precio sugerido" required>
                     <button type="submit">Guardar Artículo</button>
