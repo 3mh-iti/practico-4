@@ -12,10 +12,7 @@ formulario.addEventListener("submit", function (e) {
     e.preventDefault();
     const nombre = inptNombre.value;
     const precio = inptPrecio.value;
-    const producto = {
-        nombre,
-        precio,
-    }
+    const producto = { nombre, precio };
     inventario.push(producto);
     renderizarInventario();
     formulario.reset();
@@ -29,6 +26,7 @@ function renderizarInventario() {
         htmlGenerado += "<li class='tarjeta-producto' data-indice='" + i + "'>";
         htmlGenerado += "<p class='tarjeta-nombre'>" + articulo.nombre + "</p>";
         htmlGenerado += "<p class='tarjeta-precio'>$" + articulo.precio + "</p>";
+        htmlGenerado += "<button class='btn-editar'>Editar</button>";
         htmlGenerado += "</li>";
     });
     contenedor.innerHTML = htmlGenerado;
@@ -36,31 +34,10 @@ function renderizarInventario() {
     const productos = document.querySelectorAll(".tarjeta-producto");
     Array.from(productos).forEach(function (producto) {
         producto.addEventListener("click", function (e) {
+            if (e.target.classList.contains("btn-editar")) return;
             producto.classList.toggle("producto-seleccionado");
         });
     });
 }
 
-// Carga inicial
 renderizarInventario();
-
-formulario.addEventListener("submit", function (event) {
-    event.preventDefault();
-    // Obtener los valores del formulario
-    let nombreInput = document.getElementById("nombre");
-    let precioInput = document.getElementById("precio");
-
-    // Crear un nuevo artículo y agregarlo al inventario
-
-    let nuevoArticulo = {
-        nombre: nombreInput.value,
-        precio: precioInput.value,
-    };
-
-    inventario.push(nuevoArticulo);
-    renderizarInventario();
-
-    // Limpiar los campos del formulario.
-    nombreInput.value = "";
-    precioInput.value = "";
-});
