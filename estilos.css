@@ -50,6 +50,17 @@ header {
   margin-top: 5px;
 }
 
+.tarjeta-btn-editar {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.tarjeta-btn-editar:hover {
+  background-color: #34495e;
+}
+
 /* Clase para interactividad JS */
 .producto-seleccionado {
   border-left: 5px solid #3498db;
