@@ -1,10 +1,15 @@
-let inventario = [
-    { nombre: "Guitarra Clásica", precio: 15000, id: 1 },
-    { nombre: "Amplificador 15W", precio: 8500, id: 2 },
-    { nombre: "Set de Cuerdas", precio: 800, id: 3 }
-];
+let inventario = JSON.parse(localStorage.getItem('miInventario'))
 
-    function modificarform() {
+if (!inventario){
+    inventario = [
+        { nombre: "Guitarra Clásica", precio: 15000, id: 1 },
+        { nombre: "Amplificador 15W", precio: 8500, id: 2 },
+        { nombre: "Set de Cuerdas", precio: 800, id: 3 }
+    ];
+    localStorage.setItem('miInventario', JSON.stringify(inventario));
+
+}
+function modificarform() {
     let modificar = formulario.getAttribute("modificar");
     if (modificar === "true") {
         let indice = formulario.getAttribute("data-indice");
@@ -34,7 +39,8 @@ let inventario = [
             const boton = document.createElement("button")
             boton.classList.add("boton-modificar")
             boton.textContent = "modificar"
-            boton.addEventListener("click", function() {
+            boton.addEventListener("click", function(e) {
+            e.stopPropagation();
             formulario.setAttribute("modificar", "true");
             formulario.setAttribute("data-indice", i);
             modificarform();
@@ -45,8 +51,10 @@ let inventario = [
             btnEliminar.classList.add("boton-eliminar")
             btnEliminar.textContent = "eliminar"
             btnEliminar.addEventListener("click", function(e) {
+            e.stopPropagation();
             inventario.splice(i, 1);
-            formulatio.setAttribute("modificar", "false");
+            localStorage.setItem('miInventario', JSON.stringify('inventario'))
+            formulario.setAttribute("modificar", "false");
             renderizarInventario();
             });
 
@@ -85,9 +93,12 @@ let inventario = [
     } 
 
     else {
-    let agregarArticulo = { nombre: nombre, precio: precio, id: inventario.length + 1 };
+    let nuevoID = inventario.length > 0 ? Math.max(...inventario.map(p => p.id)) + 1 : 1;
+    let agregarArticulo = { nombre: nombre, precio: precio, id: nuevoID};
     inventario.push(agregarArticulo);
     }
+
+    localStorage.setItem('miInventario', JSON.stringify(inventario))
 
     renderizarInventario();
     document.querySelector("#nombre").value = "";
