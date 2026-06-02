@@ -15,7 +15,7 @@ formulario.addEventListener("submit", function (e) {
   const nombre = inptNombre.value;
   const precio = inptPrecio.value;
   const id = ideado.value;
-  if (ideado) {
+  if (id) {
     let ids = ideado.value;
     cambiar(ids);
     ideado.value = "";
@@ -78,8 +78,17 @@ function renderizarInventario(arreglo) {
     });
 
     borrar.addEventListener("click", function (e) {
-      inventario.splice(index, 1);
-      renderizarInventario(inventario);
+      if (ideado.value) {
+        alert("No se puede borrar porque estas modificando");
+        return;
+      }
+      if (confirm("Seguro que quieres borrar, bro?")) {
+        inventario = inventario.filter(function (producto) {
+          return producto.id !== i.id;
+        });
+        renderizarInventario(inventario);
+        return;
+      }
     });
 
     contenedor.appendChild(tarjeta);
@@ -87,8 +96,14 @@ function renderizarInventario(arreglo) {
 }
 
 function cambiar(id) {
-  inventario[id].precio = inptPrecio.value;
-  inventario[id].nombre = inptNombre.value;
+  inventario = inventario.map(function (producto) {
+    if (id === producto.id) {
+      producto.nombre = inptNombre.value;
+      producto.precio = inptPrecio.value;
+      return producto;
+    }
+    return producto;
+  });
 }
 
 busqueda.addEventListener("keyup", function (e) {
