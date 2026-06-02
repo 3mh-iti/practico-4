@@ -82,10 +82,12 @@ function renderizarInventario(arreglo) {
         alert("No se puede borrar porque estas modificando");
         return;
       }
+
       if (confirm("Seguro que quieres borrar, bro?")) {
         inventario = inventario.filter(function (producto) {
           return producto.id !== i.id;
         });
+
         renderizarInventario(inventario);
         return;
       }
@@ -97,7 +99,7 @@ function renderizarInventario(arreglo) {
 
 function cambiar(id) {
   inventario = inventario.map(function (producto) {
-    if (id === producto.id) {
+    if (id == producto.id) {
       producto.nombre = inptNombre.value;
       producto.precio = inptPrecio.value;
       return producto;
@@ -123,4 +125,10 @@ busqueda.addEventListener("keyup", function (e) {
 });
 
 // Carga inicial
-renderizarInventario(inventario);
+if (sessionStorage.length == 0) {
+  sessionStorage.setItem("inventario", JSON.stringify(inventario));
+  renderizarInventario(inventario);
+} else {
+  inventario = JSON.parse(sessionStorage.getItem("inventario"));
+  renderizarInventario(inventario);
+}
