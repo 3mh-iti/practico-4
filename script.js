@@ -27,7 +27,7 @@ formulario.addEventListener('submit', function submit(event) {
 
 function renderizarInventario() {
     let contenedor = document.getElementById("listado");
-
+    contenedor.innerHTML = "";
     inventario.forEach(articulo => {
         const tarjeta = document.createElement("li");
         tarjeta.classList.add("tarjeta-producto");
@@ -46,12 +46,12 @@ function renderizarInventario() {
 
         contenedor.appendChild(tarjeta);
 
-
         tarjeta.addEventListener('click', function (event) {
             event.preventDefault()
             tarjeta.classList.toggle("producto-seleccionado");
         });
     });
+
 }
 
 // Carga inicial
