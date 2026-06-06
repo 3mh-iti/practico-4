@@ -3,17 +3,17 @@ const formulario = document.querySelector("#formulario-producto");
 let inventario = [
     { nombre: "Guitarra Clásica", precio: 15000 },
     { nombre: "Amplificador 15W", precio: 8500 },
-    { nombre: "Set de Cuerdas", precio: 800 } 
+    { nombre: "Set de Cuerdas", precio: 800 }
 ];
 
-formulario.addEventListener('submit', function submit(event){
+formulario.addEventListener('submit', function submit(event) {
 
     event.preventDefault();
 
     const nombre = document.querySelector("#nombre");
     const precio = document.querySelector("#precio");
-    
-    datos = {
+
+    const datos = {
         nombre: nombre.value,
         precio: precio.value
     };
@@ -27,25 +27,29 @@ formulario.addEventListener('submit', function submit(event){
 
 function renderizarInventario() {
     let contenedor = document.getElementById("listado");
-    let htmlGenerado = "";
 
-    for (let i = 0; i < inventario.length; i++) {
-        let articulo = inventario[i];
-        htmlGenerado += "<li>";
-        htmlGenerado += "<article class='tarjeta-producto' data-indice='" + i + "'>";
-        htmlGenerado += "<p class='tarjeta-nombre'>" + articulo.nombre + "</p>";
-        htmlGenerado += "<p class='tarjeta-precio'>$" + articulo.precio + "</p >";
-        htmlGenerado += "</article>";
-        htmlGenerado += "</li>";
-    }
+    inventario.forEach(articulo => {
+        const tarjeta = document.createElement("li");
+        tarjeta.classList.add("tarjeta-producto");
 
-    contenedor.innerHTML = htmlGenerado;
+        const nombre = document.createElement("p");
+        nombre.classList.add("tarjeta-nombre");
 
-    const tarjetas = document.querySelectorAll(".tarjeta-producto");
-    
-    tarjetas.forEach(function(tarjeta) {
-        tarjeta.addEventListener('click', function(event) {
-            tarjetas.classList.toggle("producto-seleccionado");
+        const precio = document.createElement("p");
+        precio.classList.add('tarjeta-precio');
+
+        nombre.innerText = articulo.nombre;
+        precio.innerText = articulo.precio;
+
+        tarjeta.appendChild(nombre);
+        tarjeta.appendChild(precio);
+
+        contenedor.appendChild(tarjeta);
+
+
+        tarjeta.addEventListener('click', function (event) {
+            event.preventDefault()
+            tarjeta.classList.toggle("producto-seleccionado");
         });
     });
 }
