@@ -2,11 +2,33 @@ const form = document.querySelector("form")
 const inputNombre = document.getElementById("nombre")
 const inputPrecio = document.getElementById("precio")
 
-let inventario = [
+let arrEjemplo = [
     { nombre: "Guitarra Clásica", precio: 15000 },
     { nombre: "Amplificador 15W", precio: 8500 },
     { nombre: "Set de Cuerdas", precio: 800 }
 ];
+
+let inventario = [{ nombre: "Guitarra Clásica", precio: 15000 }]
+
+const inventarioAlmacenado = sessionStorage.getItem("inventario")
+if (inventarioAlmacenado) {
+    inventario = JSON.parse(inventarioAlmacenado)
+}
+
+let alertaMostrada = false
+
+function getArrayEnUso() {
+    if (inventario.length === 0) {
+        if (arrEjemplo.length === 3 && alertaMostrada === false) {
+            alert("inventario vacio cargando ejemplo")
+            alertaMostrada = true
+            return arrEjemplo
+        }
+        return arrEjemplo
+    }else{
+        return inventario
+    }
+}
 
 let tarjetas
 function actualizarTarjetas() {
@@ -21,10 +43,11 @@ function actualizarTarjetas() {
 actualizarTarjetas()
 
 function renderizarInventario() {
+    arrayEnUso = getArrayEnUso()
     let contenedor = document.getElementById("listado");
     contenedor.innerHTML = ""
     
-    inventario.forEach(function (e, i) {
+    arrayEnUso.forEach(function (e, i) {
         const elemento = document.createElement("article")
         elemento.classList.add("tarjeta-producto")
         elemento.setAttribute("data-indice", i)
@@ -45,12 +68,14 @@ function renderizarInventario() {
             modificarForm()
         })
 
-        const btnEliminar = elemento.querySelector("button#eliminar")
-        btnEliminar.addEventListener("click", function () {
-            elemento.classList.toggle("producto-seleccionado")
-            const indice = form.getAttribute("data-indice")
-            inventario.splice(indice, 1)
 
+        const btnEliminar = elemento.querySelector("button#eliminar")
+            btnEliminar.addEventListener("click", function () {
+            elemento.classList.toggle("producto-seleccionado")
+            const indice = elemento.getAttribute("data-indice")
+            arrayEnUso.splice(indice, 1)
+
+            sessionStorage.setItem("inventario", JSON.stringify(inventario))
             renderizarInventario()
         })
         form.setAttribute("modificar", false)
@@ -62,15 +87,33 @@ function renderizarInventario() {
 // Carga inicial
 renderizarInventario();
 
+inputNombre.addEventListener("input", function () {
+    sessionStorage.setItem("nombre", inputNombre.value)
+})
+
+inputPrecio.addEventListener("input", function () {
+    sessionStorage.setItem("precio", inputPrecio.value)
+})
+
+document.addEventListener("DOMContentLoaded", function () {
+    inputNombre.value = sessionStorage.getItem("nombre") || ""
+    inputPrecio.value = sessionStorage.getItem("precio") || ""
+})
+
+//TODO - que se guarde los inputs
+
 form.addEventListener("submit", function (e) {
     e.preventDefault()
     const modificar = form.getAttribute("modificar")
 
     if (modificar === "true") {
         const indice = form.getAttribute("data-indice")
-        inventario[indice].nombre = inputNombre.value
-        inventario[indice].precio = inputPrecio.value
 
+
+        arrayEnUso[indice].nombre = sessionStorage.getItem("nombre")
+        arrayEnUso[indice].precio = sessionStorage.getItem("precio")
+
+        sessionStorage.setItem("inventario", JSON.stringify(inventario))
         renderizarInventario()
         
         inputNombre.value = ""
@@ -79,7 +122,8 @@ form.addEventListener("submit", function (e) {
         let nombre = inputNombre.value
         let precio = parseInt(inputPrecio.value)
 
-        inventario.push({nombre: nombre, precio: precio})
+        inventario.push({ nombre: nombre, precio: precio })
+        sessionStorage.setItem("inventario", JSON.stringify(inventario))
 
         renderizarInventario()
 
@@ -89,10 +133,13 @@ form.addEventListener("submit", function (e) {
 })
 
 function modificarForm() {
+    arrayEnUso = getArrayEnUso()
     const modificar = form.getAttribute("modificar")
     if (modificar === "true") {
         const indice = form.getAttribute("data-indice")
-        inputNombre.value = inventario[indice].nombre
-        inputPrecio.value = inventario[indice].precio
+        inputNombre.value = arrayEnUso[indice].nombre
+        inputPrecio.value = arrayEnUso[indice].precio
+
+        console.log(arrayEnUso)
     }
 }
